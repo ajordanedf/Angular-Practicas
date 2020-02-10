@@ -123,6 +123,6 @@
   },
   "defaultProject": "miProyectoAngular",
   "cli": {
-    "analytics": "659ad80f-c931-4232-a188-afbffd007ccf"
+    "analytics": false
   }
 }
