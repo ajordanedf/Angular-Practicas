@@ -59,10 +59,12 @@ export class HeroesService {
     ];
 
     constructor(){
-        console.log("Servicio listo para usarse");
     }
     public getHeroes():Heroe[]{
         return this.heroes;
+    }
+    public getHeroe(id:string){
+      return this.heroes[id];
     }
 }
 
