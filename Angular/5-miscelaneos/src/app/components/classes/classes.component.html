@@ -23,3 +23,10 @@
     Cambiar
 </button>
 
+<hr><hr><hr><hr>
+
+<button [disabled]="loading" (click)="ejecutar()" class="btn btn-primary" type="button" name="button">
+    <i [ngClass]="{'fa-save':!loading, 'fa-refresh fa-spin':loading}" class="fa"></i>
+    <div class="d-inline" *ngIf="!loading" > Guardar Cambios</div>
+    <div class="d-inline" *ngIf="loading"> Guardando</div>
+</button>
