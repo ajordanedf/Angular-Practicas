@@ -1,0 +1,28 @@
+<!-- Ngclass "'string'" "variable" sirve para usar variables como clases css-->
+<!-- Podemos usar ngClass con variables de objetos -->
+<!-- <h4 [ngClass]="{'text-danger':!propiedades.danger}"> -->
+<div [ngClass]="alerta" class="alert" role="alert">
+    <pre class="mb-0">Ps ahi que vamos</pre>
+</div>
+<button (click)="alerta= 'alert-success'" class="btn btn-success">
+    Arreglar
+</button>
+<button (click)="alerta= 'alert-danger'" class="btn btn-danger ml-3">
+    Romper
+</button>
+<br><br>
+
+<h4 [ngClass]="{'text-danger':false}">
+    Variable dinamica
+</h4>
+
+<hr>
+
+<h4 [ngClass]="{'text-danger':!propiedades.danger}">
+    Tus muertos
+</h4>
+
+<button [ngClass]="{'btn-danger':propiedades.danger, 'btn-info':!propiedades.danger}" (click)="propiedades.danger= !propiedades.danger" class="btn btn-danger" type="button" name="button">
+    Cambiar
+</button>
+
