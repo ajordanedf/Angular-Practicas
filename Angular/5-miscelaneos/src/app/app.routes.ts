@@ -1,0 +1,13 @@
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+
+
+
+const routes: Routes = [
+    { path: 'home', component: HomeComponent },
+    { path: 'usuario', component: UsuarioComponent },
+    { path: '**', pathMatch:'full', redirectTo: 'home' }
+];
+
+export const appRouting = RouterModule.forRoot(routes);

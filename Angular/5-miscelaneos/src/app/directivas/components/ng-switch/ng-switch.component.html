@@ -1,1 +1,11 @@
-<p>ng-switch works!</p>
+
+<!-- Anotar en apuntes -->
+<div [ngSwitch]="alerta">
+    <div *ngSwitchCase="'success'" lass="alert alert-primary" role="alert">Primary</div>
+    <div *ngSwitchCase="'info'" class="alert alert-success" role="alert">info</div>
+    <div *ngSwitchCase="'warning'" class="alert alert-danger" role="alert">warning</div>
+    <div *ngSwitchCase="'danger'"  class="alert alert-warning" role="alert">danger</div>
+    <div *ngSwitchDefault>None</div>
+</div>
+
+<button type="button" (click)="alerta='danger'" class="btn btn-danger">Clique</button>
