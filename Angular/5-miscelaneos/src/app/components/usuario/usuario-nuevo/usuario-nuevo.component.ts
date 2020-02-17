@@ -15,7 +15,6 @@ export class UsuarioNuevoComponent implements OnInit {
       console.log("Ruta padre");
       console.log(parametros)
     })
-
   }
 
   ngOnInit(): void {
