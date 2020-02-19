@@ -23,6 +23,7 @@ export class TemplateComponent implements OnInit {
   guardar(forma:NgForm){
     console.log("Formulario posteado");
     console.log("Mi formulario:");
+    console.log(forma);
     console.log(forma.value);
   }
 

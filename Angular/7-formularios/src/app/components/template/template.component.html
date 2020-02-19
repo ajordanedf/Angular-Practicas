@@ -1,38 +1,29 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
-<!-- novalidate desactiva toda validacion HTML5 estandar -->
 <form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate>
-<!-- NOTAS
 
-ngModel ha de ir con name
-
-ngModel genera las clases en los formularios y los va fichando según los hayamos tocado
-tambien podemos decir que la proppiedad fomra parte de un objeto del backend(TS)
-clases:
-
--ng-untouched ->El usuario no ha tocado el formulario, si lo ha tocado es ng-touched
-
--ng-pristine -> Formulario con valor por defecto, es el opuesto al dirty
--ng-dirty -> Formulario modificado por el usuario
-
--ng-valid -> El formulario pasa las reglas de validacion
--->
   <div>
-
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{'has-danger':(nombre.errors?.required || nombre.errors?.minlength) && nombre.touched}">
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
         <input class="form-control"
                type="text"
                placeholder="Nombre"
                name="nombre"
-               [ngModel]="usuario.nombre"
+               [(ngModel)]="usuario.nombre"
                minlength="5"
+               #nombre="ngModel"
                required>
+            <div *ngIf="nombre.errors?.required" class="form-control-feedback">
+                Este campo es requerido
+            </div>
+            <div *ngIf="nombre.errors?.minlength" class="form-control-feedback">
+                Caaaabrown por lo menos mete {{nombre.errors.minlength.requiredLength}} carácteres.
+            </div>
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{'has-danger':apellido.errors?.required && apellido.touched}">
       <label class="col-2 col-form-label">Apellido</label>
       <div class="col-8">
 
@@ -40,15 +31,18 @@ clases:
                type="text"
                placeholder="Apellido"
                name="apellido"
-               [ngModel]="usuario.apellido"
+               [(ngModel)]="usuario.apellido"
                minlength="5"
+               #apellido="ngModel"
                required>
-      </div>
+        <div *ngIf="apellido.errors?.required" class="form-control-feedback">
+            Este campo es requerido
+        </div>
+        </div>
     </div>
-
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row" [ngClass]="{'has-danger':(correo.errors?.required || correo.errors?.pattern) && correo.touched}">
     <label class="col-2 col-form-label">Correo</label>
     <div class="col-md-8">
 
@@ -56,22 +50,27 @@ clases:
              type="email"
              placeholder="Correo electrónico"
              name="correo"
-             [ngModel]="usuario.correo"
+             [(ngModel)]="usuario.correo"
              minlength="5"
              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+             #correo="ngModel"
              required>
+        <div *ngIf="correo.errors?.required" class="form-control-feedback">
+            Este campo es requerido
+        </div>
+        <div *ngIf="correo.errors?.pattern" class="form-control-feedback">
+            Formato no adecuado para un correo
+        </div>
     </div>
+    
   </div>
-
-
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary">
+      <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">
         Guardar
       </button>
     </div>
   </div>
-
 </form>
