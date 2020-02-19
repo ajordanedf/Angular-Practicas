@@ -61,8 +61,49 @@
         <div *ngIf="correo.errors?.pattern" class="form-control-feedback">
             Formato no adecuado para un correo
         </div>
+        
+        <div class="form-group row" [ngClass]="{'has-danger':(correo.errors?.required || correo.errors?.pattern) && correo.touched}">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+                <select [(ngModel)]="usuario.pais" class="custom-select" name="pais">
+                    <option value="">Seleccione un pais</option>
+                    <option *ngFor="let pais of paises" [value]="pais.codigo">
+                        {{pais.nombre}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <!-- Selector -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Sexo</label>
+            <div class="col-md-8">
+
+                <label class="custom-control custom-radio" *ngFor="let item of sexos">
+                    <input  [(ngModel)]="usuario.sexo"
+                            name="sexo"
+                            type="radio" 
+                            [value]="item"
+                            class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{{item}}</span>
+                </label> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Acepta</label>
+            <div class="col-md-8">
+
+                <label class="custom-control custom-checkbox">
+                    <input  type="checkbox" class="custom-control-input"
+                            [(ngModel)]="usuario.acepta" name="acepta" 
+                            [value]="usuario.acepta" required>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Acepta las condiciones</span>
+                </label>
+            </div>
+        </div>
+
     </div>
-    
   </div>
 
   <div class="form-group row">
@@ -74,3 +115,7 @@
     </div>
   </div>
 </form>
+
+<pre>
+    {{usuario | json}}
+</pre>

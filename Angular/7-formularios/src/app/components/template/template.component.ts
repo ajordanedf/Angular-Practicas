@@ -10,10 +10,24 @@ import { NgForm } from '@angular/forms';
 export class TemplateComponent implements OnInit {
 
   usuario:Usuario={
-    nombre: "Antonio",
-    apellido: "Jordan",
-    correo:"toni@gmail.com"
-  };
+    nombre: null,
+    apellido: null,
+    correo: null,
+    pais: "",
+    sexo: "",
+    acepta: false
+  }
+
+  sexos=["Hombre", "Mujer"]
+
+  paises=[{
+    codigo: "ESP",
+    nombre: "España"
+  },
+  {
+    codigo: "ENG",
+    nombre: "Gran Bretaña"
+  }]
 
 
   constructor() { }
@@ -33,4 +47,7 @@ interface Usuario {
   nombre:string;
   apellido:string;
   correo:string;
+  pais:string,
+  sexo:string,
+  acepta:boolean
 }
