@@ -1,27 +1,34 @@
 <h4>Formularios <small>data</small></h4>
 <hr>
-<form>
-
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()" novalidate="novalidate()">
   <div>
+    <div formGroupName="nombreCompleto">
+        <div class="form-group row" [ngClass]="{'has-danger': !forma.get('nombreCompleto.nombre').valid}">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+            <input class="form-control"
+                    type="text"
+                    placeholder="Nombre"
+                    formControlName="nombre">
+            <div *ngIf="forma.get('nombreCompleto.nombre').errors?.required " class="form-control-feedback">
+                El nombre es requerido.
+            </div>
+            <div *ngIf="forma.get('nombreCompleto.nombre').errors?.minlength" class="form-control-feedback">
+                Mete al menos 3 carácteres.
+            </div>
+            </div>
+        </div>
 
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Nombre</label>
-      <div class="col-8">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
 
-        <input class="form-control"
-               type="text"
-               placeholder="Nombre">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Apellido</label>
-      <div class="col-8">
-
-        <input class="form-control"
-               type="text"
-               placeholder="Apellido">
-      </div>
+            <input class="form-control"
+                    type="text"
+                    placeholder="Apellido"
+                    formControlName="apellido">
+            </div>
+        </div>
     </div>
 
   </div>
@@ -32,7 +39,8 @@
 
       <input class="form-control"
              type="email"
-             placeholder="Correo electrónico">
+             placeholder="Correo electrónico"
+             formControlName="correo">
     </div>
   </div>
 
@@ -46,5 +54,5 @@
       </button>
     </div>
   </div>
-
+{{forma.valid}}
 </form>
