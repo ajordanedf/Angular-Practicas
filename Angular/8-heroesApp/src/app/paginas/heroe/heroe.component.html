@@ -1,1 +1,52 @@
 <p>heroe works!</p>
+
+
+<div class="row text-rigth">
+    <div class="col">
+        <button class="btn-danger btn" routerLink="/heroes">
+            <i class="fa-arrow-left fa"></i> Atras
+        </button>
+    </div>
+</div>
+
+<div class="row animated fadeInt faster">
+    <div class="col">
+        <form>
+            <div class="form-group">
+                <label>FirebaseID</label>
+                <input placeholder="Firebase ID" type="text" class="form-control" disabled="disabled">
+                <small class="small-text form-text text-muted">Este campo es autogenerado</small>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <input placeholder="Nombre heroe" type="text" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label>Poder</label>
+                <input placeholder="Poder del heroe" type="text" class="form-control" required>
+            </div>
+
+            <div class="form-group" style="text-align: center;">
+                <label>Estado</label>
+                <br>
+                <button class="btn btn-outline-success w-25" type="button">
+                    <i class="fa fa-smile-wink"></i> Vivo
+                </button>
+                <button class="btn btn-outline-danger w-25 ml-1" type="button">
+                    <i class="fa fa-smile-dizzy"></i> Muerto
+                </button>
+            </div>
+
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Guardar
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
