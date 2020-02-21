@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroeComponent } from './paginas/heroe/heroe.component';
 import { HeroesComponent } from './paginas/heroes/heroes.component';
+import { FormsModule } from "@angular/forms"
 
+//Para usar REST
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -16,8 +19,10 @@ import { HeroesComponent } from './paginas/heroes/heroes.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
- ],
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
