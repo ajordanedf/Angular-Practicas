@@ -10,11 +10,11 @@ const routes: Routes = [
   {path: 'pagina1', component: Pagina1Component},
   {path: 'pagina2', component: Pagina2Component},
   {path: 'pagina3', component: Pagina3Component},
-  {path: '**', component: Pagina1Component}
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
