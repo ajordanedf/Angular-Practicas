@@ -3,6 +3,7 @@ import { HeroeModel } from 'src/app/models/heroe.model';
 import { NgForm } from '@angular/forms';
 import { HeroesService } from 'src/app/services/heroes.service';
 import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-heroe',
@@ -25,19 +26,32 @@ export class HeroeComponent implements OnInit {
       return;
     }
 
+    //Para los paneles, ponemos uno de cargando, ejecutamos el proceso y cuando acaba sacamos otro panel nuevo de ya listo
+    let peticion:Observable<any>;
+
+    Swal.fire({
+      title: "Espere",
+      text: "Guardando la informacion",
+      icon: "success",
+      allowOutsideClick: false
+    });
+    Swal.showLoading();
 
     if(this.heroe.id){
-      this.heroesService.actualizarHeroe(this.heroe).subscribe(resp=>{
-        console.log(resp);
-      })
+      peticion= this.heroesService.actualizarHeroe(this.heroe);
     }else{
-      this.heroesService.crearHeroe(this.heroe).subscribe(resp=>{
-        console.log(resp);
-      });
+      peticion= this.heroesService.crearHeroe(this.heroe);
     }
+    peticion.subscribe(resp=>{
+      Swal.fire({
+        title: "Espere",
+        text: "Se ha guardado correctemente",
+        icon: "success",
+      });
+    });
   }
 
-
+//-------------------------------------------------------------Pruebas-----------------------------------
 
   chupaMelaBasico(){
     //Sweet alert basico
@@ -85,6 +99,7 @@ export class HeroeComponent implements OnInit {
     Swal.fire({
       title:'Sweet con animate CSS ',
       icon: 'info',
+      allowEscapeKey: true,
       showClass: {
         popup: 'animated fadeInDown faster'
       },
